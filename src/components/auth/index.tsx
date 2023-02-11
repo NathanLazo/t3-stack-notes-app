@@ -19,9 +19,12 @@ const Auth = () => {
                             signIn('discord').
                                 then(() => {
                                     toast.success('Logged in successfully')
+                                    console.log('Logged in successfully');
+
                                 })
-                                .catch(() => {
+                                .catch((err) => {
                                     toast.error('Something went wrong')
+                                    console.log(err);
                                 })
                         }}
                     >
