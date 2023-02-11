@@ -64,6 +64,17 @@ export const authOptions: NextAuthOptions = {
      **/
   ],
   secret: env.NEXTAUTH_SECRET,
+  logger: {
+    error(code, ...message) {
+      console.error(code, message);
+    },
+    warn(code, ...message) {
+      console.warn(code, message);
+    },
+    debug(code, ...message) {
+      console.debug(code, message);
+    },
+  },
 };
 
 /**
