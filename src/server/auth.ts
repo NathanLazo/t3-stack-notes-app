@@ -8,7 +8,6 @@ import DiscordProvider from "next-auth/providers/discord";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "../env.mjs";
 import { prisma } from "./db";
-import log from "logging-service";
 
 /**
  * Module augmentation for `next-auth` types.
@@ -65,17 +64,6 @@ export const authOptions: NextAuthOptions = {
      **/
   ],
   secret: env.NEXTAUTH_SECRET,
-  logger: {
-    error(code, metadata) {
-      log.error(code, metadata);
-    },
-    warn(code) {
-      log.warn(code);
-    },
-    debug(code, metadata) {
-      log.debug(code, metadata);
-    },
-  },
   debug: true,
 };
 
