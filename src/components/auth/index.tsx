@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Logo from '@images/the-zen-logo.png'
-import DiscLogo from '@images/discord-logo.png'
+import GoogleLogo from '@images/google.png'
 import { signIn } from "next-auth/react"
 import { toast } from 'react-hot-toast';
 
@@ -16,7 +16,7 @@ const Auth = () => {
 
                     <button aria-label="Continue with google" role="button" className="focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-700 py-3.5 px-4 border rounded-lg border-gray-700 flex items-center w-full mt-10"
                         onClick={() => {
-                            signIn('discord').
+                            signIn('google').
                                 then(() => {
                                     toast.success('Logged in successfully')
                                     console.log('Logged in successfully');
@@ -28,8 +28,8 @@ const Auth = () => {
                                 })
                         }}
                     >
-                        <Image src={DiscLogo} alt="google" width={20} height={20} />
-                        <p className="text-base font-medium ml-4 text-gray-700">Continue with Discord</p>
+                        <Image src={GoogleLogo} alt="google" width={20} height={20} />
+                        <p className="text-base font-medium ml-4 text-gray-700">Continue with Google</p>
                     </button>
 
                 </div>

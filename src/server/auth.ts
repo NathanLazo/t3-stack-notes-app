@@ -5,6 +5,7 @@ import {
   type DefaultSession,
 } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
+import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { env } from "../env.mjs";
 import { prisma } from "./db";
@@ -52,6 +53,20 @@ export const authOptions: NextAuthOptions = {
     DiscordProvider({
       clientId: env.DISCORD_CLIENT_ID,
       clientSecret: env.DISCORD_CLIENT_SECRET,
+    }),
+    GoogleProvider({
+      name: "google",
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+      profile(profile) {
+        return {
+          id: profile.sub,
+          name: profile.name,
+          user: profile.given_name, // The user has to be an object but I dont know what does it needs
+          email: profile.email,
+          image: profile.picture,
+        };
+      },
     }),
     /**
      * ...add more providers here
